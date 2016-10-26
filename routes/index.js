@@ -19,32 +19,32 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/allFiles', function (req, res, next) {
+router.get('/allFiles', function(req, res, next) {
 
-    const testFolder = 'public/uploads/';
-    const fs = require('fs');
-    var fi = [];
-    fs.readdir(testFolder, (err, files) = > {
+  const testFolder = 'public/uploads/';
+  const fs = require('fs');
+    var fi=[];
+    fs.readdir(testFolder, (err, files) => {
 
-        files.forEach(file = > {
-        console.log(file);
+    files.forEach(file => {
+    console.log(file);
 
-    fi.push(file);
-
-})
-    res.render('allFiles', {fila: fi});
-
+      fi.push(file);
 
 })
+    res.render('allFiles',{ fila:fi});
+
+
+  })
 
 
 });
 
 
-router.get('/public/images/:file(*)', function (req, res, next) {
+router.get('/public/images/:file(*)', function(req, res, next){
     var file = req.params.file;
-    var temp = __dirname;
-    var temp2 = temp.substring(0, temp.length - 7);
+    var temp=__dirname;
+    var temp2=temp.substring(0,temp.length-7);
     var path = temp2 + '/public/uploads/' + file;
     console.log(path);
     res.download(path);
